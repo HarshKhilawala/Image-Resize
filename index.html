@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Image Resize</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="icon" type="image/png" href="favicon.ico">
+
+</head>
+<body>
+
+	<div>
+		<input id="imageFile" type="file" name="demoImage" onchange="showPreview()" />
+		Original:
+		<img id="source_img" alt="" src="">
+	</div>
+
+	<div>
+		Resized:
+		<img id="output">
+	</div>
+
+	<button onclick="ResizeImage()">Resize Image</button>
+
+	<script type="text/javascript" src="JIC.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
