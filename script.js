@@ -14,12 +14,9 @@ function showPreview(){
 
 function ResizeImage() {
 
-    var toHeight = document.getElementById("height");
     var toWidth = document.getElementById("width");
-    console.log(toHeight.value);
-    console.log(toWidth.value);
-    toHeight = toHeight.value;
     toWidth = toWidth.value;
+    
     var filesToUpload = document.getElementById('imageFile').files;
     var file = filesToUpload[0];
 
@@ -36,28 +33,34 @@ function ResizeImage() {
             var ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0);
 
-            var MAX_WIDTH = toWidth;
-            var MAX_HEIGHT = toHeight;
+            // var MAX_WIDTH = toWidth;
+            // var MAX_HEIGHT = img.height;
+
             var width = img.width;
             var height = img.height;
 
-            if (width > height) {
-                if (width > MAX_WIDTH) {
-                    height *= MAX_WIDTH / width;
-                    width = MAX_WIDTH;
-                }
-            } else {
-                if (height > MAX_HEIGHT) {
-                    width *= MAX_HEIGHT / height;
-                    height = MAX_HEIGHT;
-                }
-            }
+            var toHeight = (height * toWidth)/width;
 
 
-            canvas.width = width;
-            canvas.height = height;
+            // if (width > height) {
+            //     if (width > MAX_WIDTH) {
+            //         height *= MAX_WIDTH / width;
+            //         width = MAX_WIDTH;
+            //     }
+            // } else {
+            //     if (height > MAX_HEIGHT) {
+            //         width *= MAX_HEIGHT / height;
+            //         height = MAX_HEIGHT;
+            //     }
+            // }
+
+
+
+
+            canvas.width = toWidth;
+            canvas.height = toHeight;
             var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, width, height);
+            ctx.drawImage(img, 0, 0, toWidth, toHeight);
 
             var dataurl = canvas.toDataURL("image/png");
             document.getElementById('output').src = dataurl;
