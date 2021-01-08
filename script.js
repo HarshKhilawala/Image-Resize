@@ -15,8 +15,14 @@ function showPreview(){
 function ResizeImage() {
 
     var toWidth = document.getElementById("width");
-    toWidth = toWidth.value;
+    toWidth = parseInt(toWidth.value);
     
+    var toHeight = document.getElementById("height");
+    toHeight = parseInt(toHeight.value);
+
+    console.log(toWidth);
+    console.log(toHeight);
+
     var filesToUpload = document.getElementById('imageFile').files;
     var file = filesToUpload[0];
 
@@ -38,8 +44,16 @@ function ResizeImage() {
 
             var width = img.width;
             var height = img.height;
-
-            var toHeight = (height * toWidth)/width;
+            
+            if(toHeight===0 && toWidth===0){
+                alert("Please Enter either Width or Height");
+            }else if(toHeight===0){
+                toHeight = (height * toWidth)/width;
+            }else if(toWidth===0){
+                toWidth = (width * toHeight)/height;
+            }else{
+                toHeight = (height * toWidth)/width;
+            }
 
 
             // if (width > height) {
