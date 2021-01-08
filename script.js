@@ -13,6 +13,13 @@ function showPreview(){
 
 
 function ResizeImage() {
+
+    var toHeight = document.getElementById("height");
+    var toWidth = document.getElementById("width");
+    console.log(toHeight.value);
+    console.log(toWidth.value);
+    toHeight = toHeight.value;
+    toWidth = toWidth.value;
     var filesToUpload = document.getElementById('imageFile').files;
     var file = filesToUpload[0];
 
@@ -29,8 +36,8 @@ function ResizeImage() {
             var ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0);
 
-            var MAX_WIDTH = 400;
-            var MAX_HEIGHT = 400;
+            var MAX_WIDTH = toWidth;
+            var MAX_HEIGHT = toHeight;
             var width = img.width;
             var height = img.height;
 
@@ -45,6 +52,8 @@ function ResizeImage() {
                     height = MAX_HEIGHT;
                 }
             }
+
+
             canvas.width = width;
             canvas.height = height;
             var ctx = canvas.getContext("2d");
